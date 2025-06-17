@@ -1,0 +1,646 @@
+/* styles.css */
+
+/* 1. Variables & Reset */
+:root {
+  --serif: 'Playfair Display', serif;
+  --black: #000;
+  --dark-gray: #111;
+  --white: #fff;
+  --gold: #e6c200;
+  --font-sans: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  margin-top: 69px;
+}
+
+/* — Navbar — */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: saturate(180%) blur(10px);
+  z-index: 100;
+  padding: 0.5rem 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+.btn-nav {
+  padding: 0.1rem 0.2rem;
+  background: var(--white);
+  color: var(--black);
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+/* 2. Utility Classes */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--black);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  transition: opacity 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+}
+
+/* — Hero — */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full viewport height */
+  background: url('images/hero.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* — Hero Tweaks — */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 90%;           /* make the text container wider */
+  max-width: 1000px;    /* up from 800px */
+  margin: auto;
+  padding: 0;
+}
+
+.hero-content h1 {
+  font-family: var(--serif);
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 0;     /* remove the gap under the main heading */
+}
+
+.heading-main {
+  display: block;
+}
+
+.heading-sub {
+  display: block;
+  font-style: italic;
+  color: #e6c200;
+  margin-top: -0.9em;   /* tuck it up tighter under the first line */
+  font-size: 4rem;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  max-width: 80%;       /* let the paragraph breathe wider */
+  margin: 1rem auto 2rem; /* center it and give a bit of top space */
+}
+
+
+.btn-hero {
+  padding: 1rem 2rem;
+  background: var(--white);
+  color: var(--black);
+  font-weight: 700;
+  border-radius: 999px;
+  transition: opacity 0.3s;
+}
+
+.btn-hero:hover {
+  opacity: 0.8;
+}
+
+/* 4. Sections */
+.section {
+  padding: 4rem 0;
+}
+
+.about .container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-text h2 {
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+/* Who We Are – Outline, Glow & Lift */
+.about-image img {
+  border: 4px solid var(--white);         /* white outline */
+  border-radius: 0.5rem;                  /* rounded corners */
+  box-shadow: 0 8px 20px rgba(255,255,255,0.2);  /* subtle glow */
+  transition: transform 0.3s ease,         /* smooth lift */
+              box-shadow 0.3s ease;        /* smooth glow change */
+  display: block;
+  width: 100%;
+}
+
+.about-image img:hover {
+  transform: translateY(-10px);           /* lift on hover */
+  box-shadow: 0 16px 40px rgba(255,255,255,0.3); /* stronger glow */
+}
+
+/* Projects */
+.projects h2 {
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.project-card img {
+  width: 100%;
+  display: block;
+  transition: scale 0.3s;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover .overlay {
+  opacity: 1;
+}
+
+/* Testimonials Section */
+.section.testimonials {
+  background: #000;
+  padding: 4rem 0;
+}
+.section.testimonials .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section.testimonials h2 {
+  color: #FFD700;               /* bright yellow */
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.testimonial-card {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  background: transparent;
+}
+.testimonial-card blockquote {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.testimonial-card .author {
+  color: #FFD700;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+
+/* CTA & Footer */
+.cta {
+  text-align: center;
+  background: url('path/to/cta-bg.jpg') center/cover no-repeat;
+  padding: 6rem 0;
+  position: relative;
+}
+
+.cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cta h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+
+.footer {
+  background: var(--dark-gray);
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.875rem;
+}
+
+/* — Stats Section w/ Silk Background — */
+.stats-section {
+  position: relative;
+  /* top+bottom fade over the silk */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0) 15%,
+      rgba(0,0,0,0) 85%,
+      rgba(0,0,0,1) 100%
+    ),
+    url('images/silky.png') center/cover no-repeat;
+  padding: 6rem 0;
+  color: var(--white);
+}
+
+/* Frosted-glass panel */
+.stats-panel {
+  max-width: 1200px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-radius: 0.5rem;
+  padding: 3rem 2rem;
+}
+
+/* Header */
+.stats-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.stats-header h2 {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.stats-header h2 em {
+  font-style: italic;
+  opacity: 0.8;
+  color: #e6c200;
+}
+.stats-header p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-left: 1px solid rgba(255,255,255,0.2);
+}
+.stat {
+  padding: 2rem;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.stat h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.stat p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+/* Utility override to keep stats text bright */
+.stats-section .container,
+.stats-section .stat,
+.stats-section p {
+  color: var(--white);
+}
+
+/* Services Section – two‐column cards that stack */
+.services-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 4rem 0;
+}
+
+/* Each card row */
+.service-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Frosted‐glass panel on the left */
+.service-content {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+/* Titles & copy */
+.service-content h3 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--black);
+}
+.service-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+}
+
+/* Tags pills */
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+.service-tags li {
+  position: relative;
+  padding: 0.25rem 0.75rem 0.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--dark-gray);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--black);
+}
+.service-tags li::before {
+  content: '•';
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dark-gray);
+}
+
+/* Action buttons */
+.service-actions {
+  display: flex;
+  gap: 1rem;
+}
+.service-actions .btn-primary {
+  background: var(--black);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+.service-actions .btn-secondary {
+  background: transparent;
+  border: 2px solid var(--black);
+  color: var(--black);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+/* Image on the right */
+.service-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+/* View All button centered */
+.view-all {
+  text-align: center;
+}
+.view-all .btn-primary {
+  padding: 1rem 2rem;
+  font-weight: bold;
+  border-radius: 999px;
+}
+
+/* Stack vertically on mobile */
+@media (max-width: 768px) {
+  .service-item {
+    grid-template-columns: 1fr;
+  }
+  .service-item .service-image {
+    order: -1; /* image above the content */
+  }
+}
+
+ /* ─────────────────────────────────────────────────────────
+   2A) Transform CTA – Background Container
+   ───────────────────────────────────────────────────────── */
+#transform-cta .transform-bg {
+  /* Use your swirling background exactly as the “Renew/Restore/Reveal” section */
+  background: url('images/wp12821797.webp') center/cover no-repeat;
+  position: relative;
+  padding: 6rem 0;                  /* top & bottom padding – adjust if you need more or less vertical space */
+}
+
+/* ─────────────────────────────────────────────────────────
+   2B) Transform CTA – Glass Panel (centers all content)
+   ───────────────────────────────────────────────────────── */
+#transform-cta .transform-panel {
+  /* Make it translucent/frosted */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* White border & rounding */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+
+  /* Constrain width and center horizontally */
+  max-width: 800px;      /* caps the glass panel’s width on large screens */
+  margin: 0 auto;        /* center in the parent .transform-bg */
+
+  /* Padding for content inside */
+  padding: 2rem 2.5rem;
+
+  /* Center text & items */
+  text-align: center;
+  color: #fff;           /* all text inside will be white */
+}
+
+/* ─────────────────────────────────────────────────────────
+   2C) Transform CTA – Heading / Paragraph / Button styling
+   ───────────────────────────────────────────────────────── */
+#transform-cta .transform-panel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;     /* adjust as needed */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#transform-cta .transform-panel p {
+  font-size: 1.125rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  max-width: 700px;      /* optional, limits paragraph width inside panel */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Use the same yellow/black button style you already have */
+#transform-cta .transform-panel .btn-primary {
+  background-color: #ffd700;   /* bright yellow */
+  color: #000;                 /* black text */
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+#transform-cta .transform-panel .btn-primary:hover {
+  background-color: #e6c200;   /* slightly darker yellow on hover */
+  color: #000;
+}
+/* ─────────────────────────────────────────────────────────
+   Add vertical fade at top & bottom of the swirl background
+───────────────────────────────────────────────────────── */
+#transform-cta .transform-bg {
+  /* 1) Keep the exact same background rules as before: */
+  background: url('images/silky.png') center/cover no-repeat;
+  position: relative;
+  padding: 6rem 0;
+
+  /* 2) Apply a mask that is transparent at the very top/bottom, solid in between */
+  -webkit-mask-image: 
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,     /* transparent at 0% (very top) */
+      rgba(0,0,0,1) 10%,    /* fade up to fully opaque by 10% down */
+      rgba(0,0,0,1) 90%,    /* remain fully opaque until 90% down */
+      rgba(0,0,0,0) 100%    /* fade back to transparent at 100% (very bottom) */
+    );
+  mask-image: 
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,1) 10%,
+      rgba(0,0,0,1) 90%,
+      rgba(0,0,0,0) 100%
+    );
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* ─────────────────────────────────────────────────────────
+   2D) Responsive Adjustments
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Reduce padding on transform-bg so it isn’t too tall on small screens */
+  #transform-cta .transform-bg {
+    padding: 4rem 0;
+  }
+  /* Shrink the “glass panel” horizontally on mobile */
+  #transform-cta .transform-panel {
+    padding: 1.5rem 1.25rem;
+    max-width: 90vw;   /* panel can be up to 90% of viewport width */
+  }
+  /* Shrink heading/text slightly */
+  #transform-cta .transform-panel h2 {
+    font-size: 2rem;
+  }
+  #transform-cta .transform-panel p {
+    font-size: 1rem;
+  }
+  /* Let the button span most of the panel’s width on mobile */
+  #transform-cta .transform-panel .btn-primary {
+    width: 100%;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+  }
+}
